@@ -1,0 +1,153 @@
+<link rel="stylesheet" href="resources/css/style.css">
+
+<style>
+    /* reglas de estado solicitadas */
+    input:valid {
+        border: 2px solid green;
+    }
+
+    input:invalid {
+        border: 2px solid red;
+    }
+
+    input:focus {
+        outline: 3px solid #4da3ff;
+    }
+
+    /* estilos complementarios para que tome la apariencia del formulario anterior */
+    .form-card {
+        max-width: 480px;
+        margin: 40px auto;
+        padding: 20px;
+        font-family: system-ui, "Segoe UI", Roboto, Arial;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+    }
+
+    header h2 {
+        margin: 0 0 6px 0;
+        font-size: 18px
+    }
+
+    .lead {
+        margin: 0 0 12px;
+        color: #64748b;
+        font-size: 13px
+    }
+
+    .fila {
+        margin-bottom: 12px
+    }
+
+    .label-wrap {
+        display: block;
+        font-size: 13px;
+        color: #374151;
+        margin-bottom: 6px
+    }
+
+    .helper {
+        font-size: 12px;
+        color: #64748b;
+        margin-top: 6px
+    }
+
+    input {
+        padding: 10px 12px;
+        border-radius: 8px;
+        box-sizing: border-box;
+        width: 100%;
+        transition: box-shadow .12s, border-color .12s;
+        border: 1px solid #e6eef8;
+        background: #fff
+    }
+
+    .actions {
+        display: flex;
+        justify-content: flex-end
+    }
+
+    .btn-primary {
+        background: #2563eb;
+        color: #fff;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 8px 22px rgba(37, 99, 235, 0.12)
+    }
+
+    .error-text {
+        color: #ef4444;
+        font-size: 13px;
+        margin-top: 6px
+    }
+</style>
+
+
+
+<hr style="margin:28px 0;border:none;border-top:1px solid rgba(15,23,42,0.06)">
+
+<section class="form-card" aria-labelledby="pwd-demo-title" style="padding:18px;">
+    <header>
+        <h2 id="pwd-demo-title" style="margin:0 0 6px 0;font-size:16px">Validación: contraseña</h2>
+        <p class="lead" style="margin:0 0 12px;color:#64748b;font-size:13px">Ejemplo que exige al menos un número en
+            la contraseña</p>
+    </header>
+
+    <form id="formulario" novalidate>
+        <div class="fila">
+            <label class="label-wrap" for="password">Contraseña</label>
+            <!-- input original sin modificar (atributos del input mantenidos tal como solicitaste) -->
+            <input id="password" type="password" placeholder="Contraseña" required
+                aria-describedby="pwd-help pwd-error">
+            <div id="pwd-help" class="helper">Mínimo 8 caracteres y debe incluir al menos un número.</div>
+            <div id="error" class="error-text" aria-live="polite" style="margin-top:6px"></div>
+        </div>
+
+        <div class="fila actions">
+            <button type="submit" class="btn-primary">Enviar</button>
+        </div>
+    </form>
+</section>
+
+<script>
+    /* mueve la lógica aquí para asegurar que los elementos existen en el DOM */
+    (function () {
+        const form = document.getElementById('formulario');
+        const pwd = document.getElementById('password');
+        const error = document.getElementById('error');
+
+        function check() {
+            if (!/\d/.test(pwd.value)) {
+                const msg = 'La contraseña debe incluir al menos un número';
+                pwd.setCustomValidity(msg);
+                error.textContent = msg;
+                return false;
+            }
+            if (pwd.value.length > 0 && pwd.value.length < 8) {
+                const msg = 'La contraseña debe tener al menos 8 caracteres';
+                pwd.setCustomValidity(msg);
+                error.textContent = msg;
+                return false;
+            }
+            pwd.setCustomValidity('');
+            error.textContent = '';
+            return true;
+        }
+
+        pwd.addEventListener('input', check);
+
+        form.addEventListener('submit', function (e) {
+            if (!check()) {
+                e.preventDefault();
+                pwd.focus();
+            } else {
+                // aquí podrías enviar con fetch o permitir envío normal
+                // e.preventDefault(); // descomenta para evitar envío real en pruebas
+                // alert('Envío simulado');
+            }
+        });
+    })();
+</script>

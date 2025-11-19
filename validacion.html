@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="resources/css/style.css">
+
+<main class="form-card" role="main" aria-labelledby="form-title">
+    <header>
+        <h2 id="form-title">Acceso</h2>
+        <p class="lead">Introduce tus datos para iniciar sesión</p>
+    </header>
+
+    <form novalidate>
+        <div class="fila">
+            <label class="label-wrap">
+                Correo electrónico
+                <!-- input original sin modificar -->
+                <input type="email" required placeholder="Correo electrónico">
+            </label>
+            <div class="helper">Usa un correo válido — ejemplo: usuario@dominio.com</div>
+        </div>
+
+        <div class="fila">
+            <label class="label-wrap">
+                Contraseña
+                <!-- input original sin modificar -->
+                <input type="password" minlength="8" required placeholder="Contraseña">
+            </label>
+            <div class="helper">Mínimo 8 caracteres.</div>
+        </div>
+
+        <div class="fila actions">
+            <button type="submit" class="btn-primary">Enviar</button>
+        </div>
+    </form>
+</main>

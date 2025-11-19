@@ -1,0 +1,59 @@
+<style>
+    /* Estilos básicos para separar en filas */
+    .fila {
+        margin-bottom: 12px;
+    }
+
+    .fila input,
+    .fila select {
+        display: block;
+        width: 100%;
+        max-width: 420px;
+        box-sizing: border-box;
+        padding: 8px;
+    }
+</style>
+
+<div class="fila">
+    <input type="email" placeholder="email@example.com">
+</div>
+
+<div class="fila">
+    <input type="password" minlength="8" placeholder="Contraseña (mín. 8 caracteres)">
+</div>
+
+<div class="fila">
+    <input type="number" min="1" max="100">
+</div>
+
+<div class="fila">
+    <input type="date">
+</div>
+
+<div class="fila">
+    <input type="color">
+</div>
+
+<div class="fila">
+    <input type="range" min="0" max="100">
+</div>
+
+<div class="fila">
+    <input type="file" accept="image/*">
+</div>
+
+<div class="fila">
+    <input type="tel" pattern="[0-9]{10}" placeholder="10 dígitos">
+</div>
+
+<div class="fila">
+    <input type="url" placeholder="https://ejemplo.com">
+</div>
+
+<div class="fila">
+    <select>
+        <option value="">Selecciona una opción</option>
+        <option value="mexico">México</option>
+        <option value="colombia">Colombia</option>
+    </select>
+</div>
