@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="resources/css/style.css">
 
 <style>
-    /* reglas de estado solicitadas */
     input:valid {
         border: 2px solid green;
     }
@@ -14,7 +13,7 @@
         outline: 3px solid #4da3ff;
     }
 
-    /* estilos complementarios para que tome la apariencia del formulario anterior */
+   
     .form-card {
         max-width: 480px;
         margin: 40px auto;
@@ -99,7 +98,6 @@
     <form id="formulario" novalidate>
         <div class="fila">
             <label class="label-wrap" for="password">Contraseña</label>
-            <!-- input original sin modificar (atributos del input mantenidos tal como solicitaste) -->
             <input id="password" type="password" placeholder="Contraseña" required
                 aria-describedby="pwd-help pwd-error">
             <div id="pwd-help" class="helper">Mínimo 8 caracteres y debe incluir al menos un número.</div>
@@ -113,7 +111,7 @@
 </section>
 
 <script>
-    /* mueve la lógica aquí para asegurar que los elementos existen en el DOM */
+   
     (function () {
         const form = document.getElementById('formulario');
         const pwd = document.getElementById('password');
